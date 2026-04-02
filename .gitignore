@@ -1,0 +1,70 @@
+# 🧱 Build directories
+
+build/
+build-*/
+out/
+bin/
+
+# Meson specific
+
+.meson/
+meson-private/
+meson-logs/
+meson-info/
+
+# Ninja
+
+build.ninja
+.ninja_log
+.ninja_deps
+
+# 🧾 Compilation database
+
+compile_commands.json
+
+# 🧩 Object files
+
+*.o
+*.obj
+
+# 🧪 Libraries
+
+*.a
+*.so
+*.so.*
+*.dll
+*.dylib
+
+# ⚙️ Executables
+
+*.exe
+*.out
+*.app
+
+# 🧠 Debug / symbols
+
+*.pdb
+*.dSYM/
+*.su
+
+# 🧹 Temporary / cache
+
+*.tmp
+*.cache
+*.log
+
+# 🧑‍💻 Editor junk
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+
+.DS_Store
+
+# Linux
+
+*.idx
