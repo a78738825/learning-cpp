@@ -5,22 +5,34 @@ set -e
 NAME=$1
 
 if [ -z "$NAME" ]; then
-    echo "Usage: newcpp <project_name>"
-    exit 1
+  echo "Usage: newcpp <project_name>"
+  exit 1
+fi
+
+if [ -d "$NAME" ]; then
+  echo "Error: directory '$NAME' already exists"
+  exit 1
 fi
 
 # Create structure
 mkdir -p "$NAME/src"
 
 # meson.build
-cat > "$NAME/meson.build" <<EOF
-project('$NAME', 'cpp')
+cat >"$NAME/meson.build" <<EOF
+project(
+  '$NAME',
+  'cpp',
+  default_options : ['cpp_std=c++20', 'warning_level=3']
+)
 
-executable('$NAME', ['src/main.cpp'])
+executable(
+  '$NAME',
+  ['src/main.cpp']
+)
 EOF
 
 # main.cpp
-cat > "$NAME/src/main.cpp" <<EOF
+cat >"$NAME/src/main.cpp" <<EOF
 #include <iostream>
 
 int main() {
@@ -30,7 +42,7 @@ int main() {
 EOF
 
 # .clang-format
-cat > "$NAME/.clang-format" <<EOF
+cat >"$NAME/.clang-format" <<EOF
 BasedOnStyle: LLVM
 IndentWidth: 4
 TabWidth: 4
